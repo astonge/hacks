@@ -1,0 +1,35 @@
+
+if [ -z $1 ]
+then
+    echo "provide TLD (eg: $0 [domain.tld])"
+    exit 100
+fi
+### CHECK FOR .subs FILE
+
+### Create hosts file for meg..
+echo "Creating hosts file for $1..."
+echo "http://$1" >> hosts
+echo "https://$1" >> hosts
+cat .subs|while read sub
+do
+    echo "http://$sub.$1" >> hosts
+    echo "https://$sub.$1" >> hosts
+done
+
+### Write paths
+echo "/" > paths
+echo "/robots.txt" >> paths
+
+### Run meg
+#echo "Running meg.."
+#meg -v paths hosts meg-output-$1
+
+### Show some robots.txt info
+#echo "# $1 Report" > $1-REPORT
+#grep -Hnir "Disallow" >> $1-REPORT
+
+#~/go/bin/gf urls meg-output-$1 | grep "amazonaws" | wc -l
+#~/go/bin/gf urls meg-output-$1 | grep "amazonaws"
+
+#echo "Extracting s3 URLS to s3urls..."
+#~/go/bin/gf urls meg-output-$1 | grep "amazonaws" | sed 's/https\?:\/\///' > s3urls | sed 's/.s3.*//'
