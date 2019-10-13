@@ -6,7 +6,8 @@ then
 	exit 1
 fi
 
-CMDOPT='-p1177 --rate 25'
+CMDOPT="-p1177,80,8080,16471 --rate 25 --banners -oL $1-scan"
+echo $CMDOPT
 
 while read ipblock
 do
