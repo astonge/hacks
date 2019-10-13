@@ -6,8 +6,8 @@ then
 	exit 1
 fi
 
-CMDOPT="-p1177,80,8080,16471 --rate 25 --banners -oL $1-scan"
-echo $CMDOPT
+TODAY=`date +"%F-%H-%M-%S"`
+CMDOPT="-p1177,80,8080,16471 --rate 25 --banners -oL $TODAY-scan"
 
 while read ipblock
 do
