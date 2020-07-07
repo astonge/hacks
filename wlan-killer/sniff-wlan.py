@@ -32,4 +32,4 @@ def sniffmgmt(p):
                         search(p.addr2.upper())
 						print(p.addr2.upper())
                         observedclients.append(p.addr2)
-sniff(iface=interface,prn=sniffmgmt)
+sniff(iface=interface,prn=sniffmgmt, store=0)
